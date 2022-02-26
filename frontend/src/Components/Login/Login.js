@@ -5,6 +5,7 @@ import {withRouter} from 'react-router-dom'
 import {addToken, addUser} from '../../Redux/actionCreators'
 import {baseUrl} from '../../Shared/baseUrl'
 import axios from 'axios'
+import { Container } from 'react-bootstrap'
 
 
 
@@ -45,7 +46,7 @@ class Login extends Component {
 
     render(){
         return(
-            <div>
+            <Container>
                 <h1>Please Sign In</h1>
                 <label class="sr-only">Username</label>
                 <input
@@ -71,7 +72,7 @@ class Login extends Component {
                 />
                 <Link to="/register">Need an account?</Link>
                 <button type="submit" onClick={this.handleLogin}>Sign in</button>
-            </div>
+            </Container>
         )
     }
 }
