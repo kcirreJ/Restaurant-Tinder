@@ -10,7 +10,6 @@ public class Restaurant {
     private String address;
     private String city;
     private Integer zip;
-    private Category category;
     private Integer phone;
     private LocalDateTime open;
     private LocalDateTime closed;
@@ -55,14 +54,6 @@ public class Restaurant {
         this.zip = zip;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public Integer getPhone() {
         return phone;
     }
@@ -92,12 +83,12 @@ public class Restaurant {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Restaurant that = (Restaurant) o;
-        return id.equals(that.id) && name.equals(that.name) && address.equals(that.address) && city.equals(that.city) && zip.equals(that.zip) && category == that.category && phone.equals(that.phone) && open.equals(that.open) && closed.equals(that.closed);
+        return id.equals(that.id) && name.equals(that.name) && address.equals(that.address) && city.equals(that.city) && zip.equals(that.zip) && phone.equals(that.phone) && open.equals(that.open) && closed.equals(that.closed);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, address, city, zip, category, phone, open, closed);
+        return Objects.hash(id, name, address, city, zip, phone, open, closed);
     }
 
     @Override
@@ -108,7 +99,6 @@ public class Restaurant {
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", zip=" + zip +
-                ", category=" + category +
                 ", phone=" + phone +
                 ", open=" + open +
                 ", closed=" + closed +

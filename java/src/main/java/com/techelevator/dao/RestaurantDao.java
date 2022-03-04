@@ -6,9 +6,8 @@ import java.util.List;
 
 public interface RestaurantDao {
 
+  List<Restaurant> list();
   Restaurant addRestaurant(Restaurant restaurant);
-  List<Restaurant> getRestaurants();
   List<Restaurant> getRestaurants(int zip);
-  List<Restaurant> getRestaurants(String city);
 
 }

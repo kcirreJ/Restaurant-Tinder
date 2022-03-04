@@ -1,7 +1,6 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Restaurant;
-import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class JdbcRestaurantDao implements RestaurantDao{
+public class JdbcRestaurantDao implements RestaurantDao {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -24,30 +23,33 @@ public class JdbcRestaurantDao implements RestaurantDao{
     }
 
     @Override
-    public List<Restaurant> getRestaurants() {
-        return null;
-    }
-
-    @Override
     public List<Restaurant> getRestaurants(int zip) {
         String sql = "SELECT * FROM Restaurnts WHERE zip = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, zip);
         List<Restaurant> restaurants = new ArrayList<>();
         while(results.next()) {
-            Restaurant restaurant = mapRowToRestauramt(results);
+            Restaurant restaurant = mapRowToRestaurant(results);
             restaurants.add(restaurant);
         }
         return restaurants;
     }
 
     @Override
-    public List<Restaurant> getRestaurants(String city) {
-        return null;
+    public List<Restaurant> list() {
+        List<Restaurant> restaurants = new ArrayList<>();
+        String sql = "SELECT * FROM Restaurants where restaurant_id = 1";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()) {
+            Restaurant restaurant = mapRowToRestaurant(results);
+            restaurants.add(restaurant);
+        }
+        return restaurants;
     }
 
-    private Restaurant mapRowToRestauramt(SqlRowSet rs) {
+    private Restaurant mapRowToRestaurant(SqlRowSet rs) {
         Restaurant restaurant = new Restaurant();
-        restaurant.setId(rs.getLong("id"));
+        restaurant.setId(rs.getLong("restaurant_id"));
         restaurant.setAddress(rs.getString("address"));
         restaurant.setCity(rs.getString("city"));
         //TODO:

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Navbar, Nav, Container} from 'react-bootstrap';
 
-class Header extends Component {
+class GuestHeader extends Component {
     constructor(props) {
         super(props);
 
@@ -13,7 +13,7 @@ class Header extends Component {
 
     render() {
         return (
-            <Navbar collapseOnSelect fixed='top' expand='sm' bg='dark' variant='dark'>
+            <Navbar collapseOnSelect fixed='static-top' expand='sm' bg='dark' variant='dark'>
                 <Container>
                     <Navbar.Toggle aria-controls='responsive-navbar-nav' />
                     <Navbar.Collapse id='responsive-navbar-nav'>
@@ -30,4 +30,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default GuestHeader;

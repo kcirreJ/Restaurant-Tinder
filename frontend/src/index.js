@@ -1,49 +1,18 @@
-import './index.css'; 
-import theLogo from './images/the-logo-result.png'
-import chefFood from './images/chef-food.png'
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-
-function Restaurants() {
-  return (
-    <body id='home'>
-      <img src={chefFood} alt="logo" className='logo'/>
-     <header id='top-header'>
-      <nav id='nav'>
-        <ul>
-          <li className='click'><a href="/sign-in">Sign In</a></li>
-          <li className='click'><a href="/register">Register</a></li>
-        </ul>
-      </nav>
-     </header>
-     <main id='main'>
-      <img src={theLogo} alt="logo=two" className='logo-two' onMouseOver={{color: 'red'}}/>
-      <SearchBar />
-     </main>
-    </body>
-  );
-}
-
-const SearchBar = () => (
-    <form action="/" method="get">
-        <label htmlFor="header-search">
-            <span className="visually-hidden"></span>
-        </label>
-        <div id='container'>
-          <input
-            type="text"
-            id="header-search"
-            placeholder="City/Zipcode"
-            name="s" 
-            size={75}
-        />
-        <button type="submit">Search</button>
-        </div>
-        
-    </form>
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
-export default SearchBar;
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
 
-ReactDOM.render(<Restaurants />, document.getElementById('root'));
