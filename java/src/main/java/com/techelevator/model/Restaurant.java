@@ -10,9 +10,12 @@ public class Restaurant {
     private String address;
     private String city;
     private Integer zip;
-    private Integer phone;
-    private LocalDateTime open;
-    private LocalDateTime closed;
+    private String phone;
+    private String description;
+    private String type;
+    private String open;
+    private String closed;
+    private String image;
 
     public Long getId() {
         return id;
@@ -54,41 +57,66 @@ public class Restaurant {
         this.zip = zip;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public LocalDateTime getOpen() {
+    public String getOpen() {
         return open;
     }
 
-    public void setOpen(LocalDateTime open) {
+    public void setOpen(String open) {
         this.open = open;
     }
 
-    public LocalDateTime getClosed() {
+    public String getClosed() {
         return closed;
     }
 
-    public void setClosed(LocalDateTime closed) {
+    public void setClosed(String closed) {
         this.closed = closed;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Restaurant that = (Restaurant) o;
-        return id.equals(that.id) && name.equals(that.name) && address.equals(that.address) && city.equals(that.city) && zip.equals(that.zip) && phone.equals(that.phone) && open.equals(that.open) && closed.equals(that.closed);
+        return id.equals(that.id) && name.equals(that.name) && address.equals(that.address) && city.equals(that.city) && zip.equals(that.zip) && phone.equals(that.phone) && description.equals(that.description) && type.equals(that.type) && open.equals(that.open) && closed.equals(that.closed) && image.equals(that.image);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, address, city, zip, phone, open, closed);
+        return Objects.hash(id, name, address, city, zip, phone, description, type, open, closed, image);
     }
 
     @Override
@@ -100,8 +128,11 @@ public class Restaurant {
                 ", city='" + city + '\'' +
                 ", zip=" + zip +
                 ", phone=" + phone +
+                ", description=" + description +
+                ", type=" + type +
                 ", open=" + open +
                 ", closed=" + closed +
+                ", image=" + image +
                 '}';
     }
 }

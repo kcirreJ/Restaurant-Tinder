@@ -30,7 +30,7 @@ class Login extends Component {
         const data = { username: this.state.username, password: this.state.password };
         
 
-        const userWithToken = await axios.post(baseUrl + '/login', data)
+        const userWithToken = await axios.post(baseUrl + 'login', data)
 
         
         await this.props.dispatch(addToken(userWithToken.data.token))

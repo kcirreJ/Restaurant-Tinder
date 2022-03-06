@@ -37,7 +37,7 @@ public class JdbcRestaurantDao implements RestaurantDao {
     @Override
     public List<Restaurant> list() {
         List<Restaurant> restaurants = new ArrayList<>();
-        String sql = "SELECT * FROM Restaurants where restaurant_id = 1";
+        String sql = "SELECT * FROM Restaurants";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
@@ -50,8 +50,16 @@ public class JdbcRestaurantDao implements RestaurantDao {
     private Restaurant mapRowToRestaurant(SqlRowSet rs) {
         Restaurant restaurant = new Restaurant();
         restaurant.setId(rs.getLong("restaurant_id"));
+        restaurant.setName(rs.getString("name"));
         restaurant.setAddress(rs.getString("address"));
         restaurant.setCity(rs.getString("city"));
+        restaurant.setZip(rs.getInt("zip_code"));
+        restaurant.setPhone(rs.getString("phone"));
+        restaurant.setDescription(rs.getString("description"));
+        restaurant.setType(rs.getString("type"));
+        restaurant.setOpen(rs.getString("open"));
+        restaurant.setClosed(rs.getString("close"));
+        restaurant.setImage(rs.getString("image"));
         //TODO:
         return restaurant;
     }
