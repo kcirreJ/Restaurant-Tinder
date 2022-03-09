@@ -56,9 +56,9 @@ class Register extends Component {
             //Then with the data from the response in JSON...
             .then((data) => {
                 console.log('Success:', data);
-                if(data.state == 201){
+                if(data.state === 201){
                     this.setState({globalError:'User is created'});
-                } else if(data.status == 400){
+                } else if(data.status === 400){
                     this.setState({globalError:data.message});
                 }
             })
@@ -97,7 +97,7 @@ class Register extends Component {
             errors.password = 'Password should be <= 10 characters';
         //else if (this.state.touched.password && !this.CheckSymbols(password))
         //errors.password = 'Password should contain at least one of the following !@#$%';
-        if(this.state.touched.confirmpassword && confirmpassword != password)
+        if(this.state.touched.confirmpassword && confirmpassword !== password)
             errors.confirmpassword = 'Password does not match';
         return errors;
     }
