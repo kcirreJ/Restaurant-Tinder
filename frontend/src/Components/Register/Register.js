@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
+import { Button, Alert, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
 import '../../Components/Register/register.css';
 import {baseUrl} from '../../Shared/baseUrl'
-
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +17,8 @@ class Register extends Component {
                 password: false,
                 confirmpassword: false
             },
-            globalError: ''
+            globalMessage: '',
+            userAlreadyExit: false
        }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -38,10 +38,10 @@ class Register extends Component {
         const postData ={
             email: this.state.email,
             password: this.state.password,
-            username: 'userName001',
+            username: this.state.email,
             lastName: 'lastName',
             firstName: 'firstName',
-            confirmPassword:  this.state.password,
+            confirmPassword:  this.state.confirmpassword,
             role: 'ROLE_USER'
         }
         //POST request with body equal on data in JSON format
@@ -52,20 +52,28 @@ class Register extends Component {
             },
             body: JSON.stringify(postData),
         })
-            .then((response) => response.json())
-            //Then with the data from the response in JSON...
-            .then((data) => {
-                console.log('Success:', data);
-                if(data.state == 201){
-                    this.setState({globalError:'User is created'});
-                } else if(data.status == 400){
-                    this.setState({globalError:data.message});
+        .then (response => {
+                        if(response.status ==  201){
+                           return response;
+                        } else{
+                            return response.json();
+                        }
+               })
+        .then((response) => {
+            if(response.status == 201){
+                 this.setState({
+                 globalMessage:'User is created',
+                 userAlreadyExit: false
+                 });
+            } else if(response.status == 400){
+               this.setState({
+                   globalMessage: response.message,
+                   userAlreadyExit: true
+                   });
                 }
             })
-            //Then with the error genereted...
             .catch((error) => {
                 console.error('Error:', error);
-                //TODO: show this error in
                 this.setState({globalError:'Error found in saveing'});
             });
             event.preventDefault();
@@ -105,9 +113,12 @@ class Register extends Component {
         const errors = this.validate(this.state.email, this.state.password, this.state.confirmpassword);
         return (
             <>
-                {/* <h1>this o{this.state.globalError}</h1> */}
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <h1 className="text-center">Welcome</h1>
+                <br/>
+                <br/>
+                  {!this.state.userAlreadyExit && this.state.globalMessage && this.state.globalMessage.length > 0 &&<Alert color="primary">{this.state.globalMessage}</Alert>}
+                  {this.state.userAlreadyExit &&  this.state.globalMessage && this.state.globalMessage.length > 0 &&<Alert color="danger">{this.state.globalMessage}</Alert>}
                 <FormGroup>
                     <Input type="email" id="email" name="email"
                         placeholder="Email"
