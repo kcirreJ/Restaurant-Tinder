@@ -1,5 +1,6 @@
-import {Component} from 'react'
-import {Switch, Route, Redirect, Link} from 'react-router-dom'
+import React, {Component} from 'react'
+import {Switch, Route, Redirect, Link, NavLink} from 'react-router-dom'
+import { Navbar, Nav, Container } from 'react-bootstrap'
 import Login from '../Login/Login'
 import Register from '../Register/Register'
 import Home from '../Home/Home'
@@ -45,7 +46,18 @@ class Main extends Component {
             <div>
                 {this.props.token.token !== undefined ?
                         <div>
-                            <AuthorizedHeader />
+                            <Navbar collapseOnSelect fixed='static-top' expand='sm' bg='dark' variant='dark'>
+                                <Container>
+                                    <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+                                    <Navbar.Collapse id='responsive-navbar-nav'>
+                                        <Nav>
+                                            <Nav.Link to='/home'>Home</Nav.Link>
+                                            <Nav.Link as={Link} to='/login' onClick={this.handleLogout}>logout</Nav.Link> 
+                                            <Redirect to='/home'/>
+                                        </Nav>
+                                    </Navbar.Collapse>
+                                </Container>
+                            </Navbar>
                         </div>  
                     : 
                         <GuestHeader />
@@ -54,7 +66,7 @@ class Main extends Component {
                     <Switch>
                         <Route path='/login' component={() => <Login/>}/>
                         <Route path='/register'component={() => <Register/>}/>
-                        <Route path='/home' component={this.props.token.token !== undefined ? () => <Home rest/> : null}/>
+                        <Route path='/home' component={this.props.token.token !== undefined ? () => <Home /> : null}/>
                         <Route path='/restaurants' component={() => <RestaurantList restaurants={this.props.restaurants.restaurants} isLoading={this.props.restaurants.isLoading} errMess={this.props.restaurants.errMess} />}/>
                         <Redirect to='/login'/>
                     </Switch>

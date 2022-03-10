@@ -1,5 +1,5 @@
 body {
-  background-image: url("./images/Kings-Tables.jpg");
+  background-image: url("./images/Kings-Tables(Login).jpg");
   background-size: 1550px;
   /* background-position: top; */
   background-color: green;
@@ -85,7 +85,7 @@ a:hover {
 }
 
 label {
-  color: white
+  color: white;
 }
 
 h1 {
@@ -103,5 +103,3 @@ h5 {
 p {
   color: white;
 }
-
-

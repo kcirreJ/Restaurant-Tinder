@@ -15,10 +15,10 @@ export const deleteUser = () => ({
     type: ActionTypes.DELETE_USER
 })
 
-export const fetchRestaurants = () => (dispatch) => {
+export const fetchRestaurants = (zip) => (dispatch) => {
     dispatch(restaurantsLoading(true));
 
-    return fetch(baseUrl + 'restaurants')
+    return fetch(baseUrl + 'restaurants' + '/33131')
         .then(response => {
             if (response.ok) {
                 return response;

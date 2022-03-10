@@ -9,14 +9,6 @@ const Home = (props) => {
   return (
     <body id='home'>
       <img src={chefFood} alt="logo" className='logo'/>
-     <header id='top-header'>
-      <nav id='nav'>
-        <ul>
-          <li className='click'><a href="/sign-in">Sign In</a></li>
-          <li className='click'><a href="/register">Register</a></li>
-        </ul>
-      </nav>
-     </header>
      <main id='main'>
       <img src={theLogo} alt="logo=two" className='logo-two' onMouseOver={{color: 'red'}}/>
       <SearchBar />

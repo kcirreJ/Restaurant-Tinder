@@ -38,8 +38,8 @@ public class RestaurantController {
     }
 
 //    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @RequestMapping(path = "/restaurants" , method = RequestMethod.GET)
-    public List<Restaurant> list() {
-        return restaurantDao.list();
+    @RequestMapping(path = "/restaurants/{zip}" , method = RequestMethod.GET)
+    public List<Restaurant> list(@PathVariable int zip) {
+        return restaurantDao.list(zip);
     }
 }
