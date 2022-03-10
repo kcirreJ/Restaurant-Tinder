@@ -5,3 +5,27 @@
   margin: 30px;
   margin-left: 80px;
 }
+
+#register {
+  background-image: url("../../images/Welcome-To-Our-Store3.jpg");
+  background-size: 55%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    ". ."
+    ". .";
+}
+
+/* #register:hover {
+  background-image: url("../../images/Welcome-To-Our-Store3.jpg");
+  background-size: 55%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    ". ."
+    ". .";
+} */

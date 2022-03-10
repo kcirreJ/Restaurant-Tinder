@@ -1,18 +1,18 @@
 body {
   background-image: url("./images/Kings-Tables(Login).jpg");
   background-size: 1550px;
-  /* background-position: top; */
-  background-color: green;
 }
 
 #home {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
     "top-header top-header"
     "img img"
     "navbar navbar";
+  background-image: url("./images/Kings-Tables(Login).jpg");
+  background-size: 1550px;
 }
 
 .logo {
@@ -72,10 +72,6 @@ li {
   display: flex;
   margin-left: 55%;
   height: 25px;
-}
-
-.search {
-  font-size: large;
 }
 
 a,

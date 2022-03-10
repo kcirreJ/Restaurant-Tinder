@@ -5,6 +5,27 @@ import { Link } from 'react-router-dom'
 import { Button, Alert, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
 import '../../Components/Register/register.css';
 import {baseUrl} from '../../Shared/baseUrl'
+import WelcomeToOurStore1 from '../../images/Welcome-To-Our-Store1.png'
+import WelcomeToOurStore3 from '../../images/Welcome-To-Our-Store3.jpg'
+
+
+function Arrow() {
+  const [over, setOver] = useState(false);
+  return (
+    <div
+      onMouseOver={() => setOver(true)}
+      onMouseOut={() => setOver(false)}
+    >
+         <img
+          src={over ? WelcomeToOurStore3 : WelcomeToOurStore1}
+          alt="arrow"
+          width="50"
+          height="50"
+        />
+    </div>   
+  )
+}
+
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -106,7 +127,7 @@ class Register extends Component {
     render() {
         const errors = this.validate(this.state.email, this.state.password, this.state.confirmpassword);
         return (
-            <React.Fragment>
+            <div id='register'>
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <h1 className="text-center">Welcome</h1>
                 <br/>
@@ -142,9 +163,9 @@ class Register extends Component {
                         onChange={this.handleInputChange} />
                     <FormFeedback>{errors.confirmpassword}</FormFeedback>
                 </FormGroup>
-                <Button className="btn-md btn-dark btn-block">Register</Button>
+                <Button className="btn-md btn-dark btn-block" id='submit'> Register</Button>
             </Form>
-            </React.Fragment>
+            </div>
         );
     }
 }
