@@ -47,6 +47,7 @@ class Login extends Component {
     render(){
         return(
             <Container>
+                <br /> <br />
                 <h1>Please Sign In</h1>
                 <label class="sr-only">Username</label>
                 <input
@@ -76,5 +77,6 @@ class Login extends Component {
         )
     }
 }
+
 
 export default withRouter(connect(mapDispatchToProps)(Login));
