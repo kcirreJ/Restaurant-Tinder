@@ -30,7 +30,7 @@ const SearchBar = () => (
             name="s" 
             size={75}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="btn-md btn-secondary btn-block text-align" id='search' >Search</button>
         </div>
         
     </form>

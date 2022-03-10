@@ -106,10 +106,9 @@ class Register extends Component {
     render() {
         const errors = this.validate(this.state.email, this.state.password, this.state.confirmpassword);
         return (
-            <>
+            <React.Fragment>
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <h1 className="text-center">Welcome</h1>
-                <br/>
                 <br/>
                   {!this.state.userAlreadyExit && this.state.globalMessage && this.state.globalMessage.length > 0 &&<Alert color="primary">{this.state.globalMessage}</Alert>}
                   {this.state.userAlreadyExit &&  this.state.globalMessage && this.state.globalMessage.length > 0 &&<Alert color="danger">{this.state.globalMessage}</Alert>}
@@ -145,7 +144,7 @@ class Register extends Component {
                 </FormGroup>
                 <Button className="btn-md btn-dark btn-block">Register</Button>
             </Form>
-            </>
+            </React.Fragment>
         );
     }
 }

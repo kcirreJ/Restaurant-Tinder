@@ -60,6 +60,7 @@ class Login extends Component {
                     onChange={this.handleInputChange}
                     required
                 />
+                
                 <label class="sr-only">Password</label>
                 <input
                     type="password"
@@ -71,8 +72,9 @@ class Login extends Component {
                     onChange={this.handleInputChange}
                     required
                 />
-                <Link to="/register">Need an account?</Link>
-                <button type="submit" onClick={this.handleLogin}>Sign in</button>
+                <br />
+                 <button type="submit" onClick={this.handleLogin} className = "btn-md btn-light btn-block">Sign in</button>
+                &nbsp;&nbsp; <Link to="/register">Need an account?</Link> 
             </Container>
         )
     }
