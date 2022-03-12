@@ -2,8 +2,12 @@ import {Link} from 'react-router-dom'
 import React, { Component } from 'react';
 import Media from 'react-bootstrap/Media';
 import { Container } from 'react-bootstrap';
+import { useState } from 'react';
+import '../Restaurant/RestaurantList.css'
+import phoneIcon from '../../images/phone-icon.png'
 
 function ListRestaurants({restaurant}) {
+     const [value, setValue] = useState(0);
     return (
         <Media as="li">
             <img
@@ -13,8 +17,13 @@ function ListRestaurants({restaurant}) {
                 src={restaurant.image}
                 alt={restaurant.name}
             />
-            <Media.Body>
-                <h4>{restaurant.name}</h4>
+            <button className='btn btn-outline-success' id='thumbs-up' key={restaurant.id} tabIndex = "0"
+            onClick={()=> setValue(value + 1)}>Like</button>
+            <button className='btn btn-outline-danger' id='thumbs-down' key={restaurant.id} tabIndex = "0"
+             onClick={()=> setValue(value - 1)}>Dislike</button>
+
+            <Media.Body> 
+                <h4>{restaurant.name} | <a href= "tel: {restaurant.phone}" ><img src={phoneIcon} alt="phone-logo" className='logo'/> { restaurant.phone} </a> </h4>
                 <h5>{restaurant.type} | {restaurant.address} | hours {restaurant.open} - {restaurant.closed}</h5>
                 <p>
                 {restaurant.description}
@@ -25,11 +34,11 @@ function ListRestaurants({restaurant}) {
 }
 
 const RestaurantList = (props) => {
-
+         
     const list = props.restaurants.map((restaurant) => {
         return (
             <Container>
-                <ListRestaurants restaurant={restaurant} />
+                <ListRestaurants restaurant={restaurant} key={restaurant.id}/>
             </Container>
         )
     })

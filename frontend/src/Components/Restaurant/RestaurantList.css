@@ -1,0 +1,30 @@
+#thumbs-up {
+  margin-left: 1%;
+}
+
+#thumbs-up:hover {
+  background-color: green;
+}
+
+#thumbs-up:focus {
+  background-color: green;
+  color: white;
+}
+
+#thumbs-down {
+  margin-left: 1.3%;
+}
+
+#thumbs-down:hover {
+  background-color: red;
+}
+
+#thumbs-down:focus {
+  background-color: red;
+  color: white;
+}
+
+.logo {
+  height: 30px;
+  width: auto;
+}
