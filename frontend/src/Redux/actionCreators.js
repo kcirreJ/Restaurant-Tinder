@@ -50,3 +50,8 @@ export const addRestaurants = (restaurants) => ({
     type: ActionTypes.ADD_RESTAURANTS,
     payload: restaurants
 })
+
+export const getZip = (zip) => ({
+    type: ActionTypes.ADD_ZIP,
+    payload: zip
+})

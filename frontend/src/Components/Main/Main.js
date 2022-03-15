@@ -4,27 +4,29 @@ import { Navbar, Nav, Container } from 'react-bootstrap'
 import Login from '../Login/Login'
 import Register from '../Register/Register'
 import Home from '../Home/Home'
-import {addToken, deleteUser} from '../../Redux/actionCreators'
+import {addToken, deleteUser, fetchRestaurants, getZip} from '../../Redux/actionCreators'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import { fetchRestaurants } from '../../Redux/actionCreators'
 import GuestHeader from '../Header/GuestHeader'
 import Footer from '../Footer/Footer'
 import AuthorizedHeader from '../Header/AuthorizedHeader'
 import RestaurantList from '../Restaurant/RestaurantList';
+import RestaurantCards from '../Restaurant/RestaurantCards';
 
 const mapStateToProps = state => {
     return {
         restaurants: state.restaurants,
         token: state.token,
-        user: state.user
+        user: state.user,
+        zip: state.zip
     }
 }
 
 const mapDispatchToProps = (dispatch) => ({
     addToken: () => { dispatch(addToken()) },
-    deleteUser: () => { dispatch(deleteUser())},
-    fetchRestaurants: () => {dispatch(fetchRestaurants())}
+    deleteUser: () => { dispatch(deleteUser()) },
+    fetchRestaurants: (zip) => { dispatch(fetchRestaurants(zip)) },
+    getZip: (zip) => { dispatch(getZip(zip)) }
 });
 
 class Main extends Component {
@@ -66,8 +68,9 @@ class Main extends Component {
                     <Switch>
                         <Route path='/login' component={() => <Login/>}/>
                         <Route path='/register'component={() => <Register/>}/>
-                        <Route path='/home' component={this.props.token.token !== undefined ? () => <Home /> : null}/>
+                        <Route path='/home' component={this.props.token.token !== undefined ? () => <Home zip={this.props.zip.zip}/> : null}/>
                         <Route path='/restaurants' component={() => <RestaurantList restaurants={this.props.restaurants.restaurants} isLoading={this.props.restaurants.isLoading} errMess={this.props.restaurants.errMess} />}/>
+                        <Route path='/vote' component={() => <RestaurantCards restaurants={this.props.restaurants.restaurants} isLoading={this.props.restaurants.isLoading} errMess={this.props.restaurants.errMess} />}/>
                         <Redirect to='/login'/>
                     </Switch>
             </div>

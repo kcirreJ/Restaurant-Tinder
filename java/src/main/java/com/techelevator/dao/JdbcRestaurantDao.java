@@ -23,18 +23,6 @@ public class JdbcRestaurantDao implements RestaurantDao {
     }
 
     @Override
-    public List<Restaurant> getRestaurants(int zip) {
-        String sql = "SELECT * FROM Restaurnts WHERE zip = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, zip);
-        List<Restaurant> restaurants = new ArrayList<>();
-        while(results.next()) {
-            Restaurant restaurant = mapRowToRestaurant(results);
-            restaurants.add(restaurant);
-        }
-        return restaurants;
-    }
-
-    @Override
     public List<Restaurant> list(int zip) {
         List<Restaurant> restaurants = new ArrayList<>();
         String sql = "SELECT * FROM Restaurants where zip_code = ?";

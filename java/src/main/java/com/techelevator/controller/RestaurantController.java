@@ -21,25 +21,11 @@ public class RestaurantController {
         this.restaurantDao = jdbcRestaurantDao;
     }
 
-    @RequestMapping(value = "/restaurants/zip", method = RequestMethod.GET)
-    public List<Restaurant> getRestaurantByZip(@Valid @RequestBody String zip) {
-        List<Restaurant> restaurants = new ArrayList<>();
-        if(zip != null){
-          restaurants = restaurantDao.getRestaurants(Integer.valueOf(zip));
-       }
-        return restaurants;
-    }
-
-
-    @RequestMapping(value = "/zip", method = RequestMethod.POST)
-    public Restaurant getRestaurantByZip(@Valid @RequestBody Restaurant restaurant) {
-
-        return restaurantDao.addRestaurant(restaurant);
-    }
-
 //    @ResponseStatus(HttpStatus.NOT_FOUND)
     @RequestMapping(path = "/restaurants/{zip}" , method = RequestMethod.GET)
-    public List<Restaurant> list(@PathVariable int zip) {
+    public List<Restaurant> getRestaurantByZip(@PathVariable int zip) {
         return restaurantDao.list(zip);
     }
 }
+
+
